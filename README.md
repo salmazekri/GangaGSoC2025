@@ -1,4 +1,4 @@
-# Challenge for Ganga projects in GSoC 2024
+# Challenge for Ganga projects in GSoC 2025
 
 The challenge that forms part of the Ganga projects in GSoC is divided up into two pieces.
 
