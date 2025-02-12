@@ -26,10 +26,10 @@ Through the dependency, this will install Ganga as well, such that you can work 
 ## Communication
 
 Communication is an important part of working in GSoC. We use the CERN Mattermost server for instant messaging about the project. Please
-- Create a CERN external account by following the [instructions](https://account.cern.ch/account/externals/)
+- Create a CERN guest account by following the [instructions](https://users-portal.web.cern.ch/guest-registration)
 - Follow [the link](https://mattermost.web.cern.ch/signup_user_complete/?id=6t4p1zptyp8pdn6ptore9ex9hw) to
   join the Ganga Team in MatterMost. You can install MatterMost as an application, or you can just use it inside your browser.
-- When you have joined the Ganga Team, please join the [GSoC2024 channel](https://mattermost.web.cern.ch/ganga/channels/gsoc2024).
+- When you have joined the Ganga Team, please join the [GSoC2025 channel](https://mattermost.web.cern.ch/ganga/channels/gsoc-2025).
 - Introduce yourself with a few words to the channel.
 
 It is by far the best if most communication is public in the MatterMost channel, but you can also instant message @egede, @masmith and @arichard for more specific issues. Please do not post solutions to the challenge to the public channel but you are welcome to discuss issues regarding the challenge.
