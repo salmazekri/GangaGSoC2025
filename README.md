@@ -68,9 +68,12 @@ The purpose of this challenge is to demonstrate that you can communicate with a 
 
 ## Static analysis of a code base in a testing environment (do this if interested in the deprecation project)
 
-1) Write code that will perform a static analysis of the code base and identify decorators of the type
-```@deprecated(version='8.6.9', reason="Singularity is the old name, use Apptainer instead", expiry=datetime.date(2024,7,1))```
+1) Write code that will perform a static analysis of the code located in the `deprecated` test directory and identify decorators of the type
+```
+@deprecated(version='8.6.9', reason="Singularity is the old name, use Apptainer instead", expiry=datetime.date(2024,7,1))
+```
    where todays date is after the expiry time. Code that is commented out should not be considered.
+
 2) Integrate this into the continuous integration such that a failure is reported if there are deprecated functions that have not been removed before their expiry.
 3) Create screen grabs or similar to document how it is working.
 
@@ -78,4 +81,4 @@ The purpose of this challenge is to demonstrate that you can communicate with a 
 You are welcome to seek feedback on your solution to the challenges while they are still work in progress. For feedback PM @egede, @masmith and @arichard in MatterMost. Make sure that you have given access in Github to us as directed above.
 
 ## Submission
-When you are ready to submit, then please use the [Google form](https://docs.google.com/forms/d/e/1FAIpQLScCrQBFrm0auXYJqKuzDGkjoHdj-fV7hvo_TKBc85nJpIIY1A/viewform) to let us know.
+When you are ready and have the final version of your code in the main branch of your repo, then please use the [Google form](https://docs.google.com/forms/d/e/1FAIpQLScCrQBFrm0auXYJqKuzDGkjoHdj-fV7hvo_TKBc85nJpIIY1A/viewform) to let us know.
