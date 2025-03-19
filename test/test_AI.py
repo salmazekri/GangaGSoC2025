@@ -4,37 +4,64 @@ import sys
 import tempfile
 import unittest
 
-# Add the directory containing generate_pi_code.py to the system path
+# Function to install Ganga if it's not already installed
+def install_ganga():
+    try:
+        import ganga
+    except ImportError:
+        print("Ganga not found. Installing...")
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "ganga"])
+        print("Ganga installed successfully.")
+    else:
+        print("Ganga is already installed.")
+
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
-from src.Ai_part.generate_pi_code import generate_pi_code
+from Ai_part.generate_pi_code import generate_pi_code
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, project_root)
 
 class TestGeneratedCodeExecution(unittest.TestCase):
 
     def test_generated_code_execution(self):
+        install_ganga()
+        #gemini response here
         code = generate_pi_code()
 
         self.assertNotEqual(code, "Generated code is empty.")
 
-        # Create a temporary file to save the generated code
+        # Clean the code by removing Markdown code block delimiters
+        code = self.clean_code(code)
+
         with tempfile.NamedTemporaryFile(delete=False, suffix='.py') as temp_file:
             temp_file.write(code.encode())
             temp_file_path = temp_file.name
 
         try:
-            # Run the generated code using subprocess
-            result = subprocess.run([sys.executable, temp_file_path], capture_output=True, text=True)
+            env = os.environ.copy()
+            env['PYTHONPATH'] = '/path/to/ganga/module'  # Adjust this path as needed
 
-            # Check if the execution was successful
+            result = subprocess.run([sys.executable, temp_file_path], capture_output=True, text=True, env=env)
+
             self.assertEqual(result.returncode, 0, f"Error executing generated code: {result.stderr}")
 
-            # Optionally, process the result.stdout as needed
             print(result.stdout)
 
         finally:
-            # Clean up the temporary file
             if os.path.isfile(temp_file_path):
                 os.remove(temp_file_path)
+
+    def clean_code(self, code):
+        """
+        Removes Markdown code block delimiters and any leading/trailing whitespace
+        from the generated code.
+        """
+        lines = code.splitlines()
+        if lines[0].startswith('```python'):
+            lines.pop(0) 
+        if lines and lines[-1] == '```':
+            lines.pop() 
+        return '\n'.join(lines)
 
 if __name__ == '__main__':
     unittest.main()

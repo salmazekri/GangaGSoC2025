@@ -19,6 +19,7 @@ sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
 from generate_pi_code import generate_pi_code
 
+
 class TestGeneratedCodeExecution(unittest.TestCase):
 
     def test_generated_code_execution(self):
