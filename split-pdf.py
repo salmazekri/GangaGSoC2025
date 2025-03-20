@@ -3,7 +3,6 @@ import sys
 import os
 
 def split_pdf(input_file):
-    # Get the directory of the input file
     output_dir = os.path.dirname(os.path.abspath(input_file))
     base_name = os.path.splitext(os.path.basename(input_file))[0]
 
@@ -15,7 +14,6 @@ def split_pdf(input_file):
                 output = PdfWriter()
                 output.add_page(inputpdf.pages[i])
                 
-                # Create output path in same directory as input file
                 output_path = os.path.join(output_dir, f"{base_name}_page_{i+1}.pdf")
                 with open(output_path, "wb") as outputStream:
                     output.write(outputStream)
