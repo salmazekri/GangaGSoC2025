@@ -57,7 +57,7 @@ or
    - GitHub Actions configured to run tests automatically
 
 ![Snapshot of ganga jobs running](src/gangagsoc/docs/image.png)
-![28 jobs](src/gangagsoc/docs/28_jobs.png)
+![28 jobs](src/gangagsoc/docs/29_jobs.png)
 
 
 ### Running Instructions
@@ -129,15 +129,13 @@ install_requires=[
 ]
 
 ## Project Structure
-
-```
 gangagsoc/
 ├── src/
 │   └── gangagsoc/
 │       ├── docs/                          # Documentation assets
 │       │   ├── hello-world-showcase.png
 │       │   ├── image.png
-│       │   ├── 28_jobs.png
+│       │   ├── 29_jobs.png
 │       │   ├── frontend-django-chat.png
 │       │   └── response.png
 │       ├── split_pages/                   # Output directory for split PDFs
@@ -164,4 +162,3 @@ gangagsoc/
 ├── requirements.txt                       # Project dependencies
 ├── PROJECT.md                             # Project documentation
 └── CV.pdf                                 # CV
-```
