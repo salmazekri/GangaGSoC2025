@@ -2,48 +2,28 @@ name: Testing workflow
 
 on:
   workflow_dispatch:
+
   push:
-    branches:
-      - main
-  pull_request:
     branches:
       - main
 
 jobs:
-  test:
-    name: Python Tests
+  core-unit:
+    name: Test
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./src/gangagsoc
-
     steps:
       - uses: actions/checkout@v4
-      
       - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v1
         with:
           python-version: 3.11
-          cache: 'pip'
-
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y poppler-utils
-
-      - name: Install Python dependencies
+      - name: Install dependencies
         run: |
           python -m venv ~/venv
           . ~/venv/bin/activate
           python -m pip install --upgrade pip setuptools wheel
-          python -m pip install google-generativeai pytest pytest-cov
           python -m pip install -e .
-
-      - name: Set PYTHONPATH
-        run: |
-          echo "PYTHONPATH=$PYTHONPATH:${{ github.workspace }}/src" >> $GITHUB_ENV
-
       - name: Test with pytest
         run: |
           . ~/venv/bin/activate
-          python -m pytest test --cov=./ --cov-report=xml
+          python -m pytest test
