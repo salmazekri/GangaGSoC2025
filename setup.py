@@ -12,6 +12,9 @@ setup(
     install_requires=[
           'pytest',
           'ganga',
+          "google-generativeai>=0.8.4",
+          "pytest>=8.3.5",
+          "pytest-cov>=4.1.0",
       ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',

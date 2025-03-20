@@ -6,7 +6,7 @@ job.application = Executable()
 job.application.exe = File("counter.sh")
 # local paths
 #replace with your path
-args = [[f"/gangagsoc/split_pages/page_{i}.pdf"] for i in range(1, 30)]
+args = [["page_1.pdf"],["page_2.pdf"],["page_3.pdf"]]
 splitter = ArgSplitter(args=args)
 filelist = []
 for i in range(len(args)):

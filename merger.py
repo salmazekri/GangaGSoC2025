@@ -1,10 +1,5 @@
-# # SOLUTION TO TASK 1B
-# # GSoC 2019
-# # AUTHOR - TARUN RAHEJA
-# # SCRIPT FOR CUSTOM MERGER
-
 import os
-#custom merge function, reads input files, sums up numbers, prints to another file
+# output_file = "output.txt"
 def merge(file_list,output_file):
     f_out = open(output_file, 'w')
     sum = 0

@@ -1,3 +1,4 @@
+#prompt for pi calculation is hardcoded into the code
 import google.generativeai as genai
 import os
 
@@ -39,10 +40,6 @@ def generate_pi_code():
 
     # Check if the code is non-empty
     if code:
-        # Define the file path
-
-        # Attempt to create and write to the file if it doesn't exist
-
         print(code)
 
     return code
