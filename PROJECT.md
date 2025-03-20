@@ -39,7 +39,7 @@ or
 
 ### PDF Processing Implementation
 1. **PDF Splitting Job**
-   - Implemented in `split-pdf.py`
+   - Implemented in `ganga -i test_split_merge.py`
    - Uses PyPDF2 to split PDF into individual pages
    - Output stored in `split_pages/` directory
    - split using `python split-pdf.py LHC.pdf `
@@ -48,21 +48,22 @@ or
 2. **Word Counting Job**
    - Implemented word counting in `counter.sh`
    - Used ArgSplitter for parallel processing
-   - Created merger in `merger.py` to combine results
+   - Created merger in `mymerger.py` to combine results
 
 3. **Tests**
    - - `test/test_ganga_job.py`: Test implementation for PDF processing
    - Located in `test/` directory
-   - Tests PDF splitting, word counting, and merging
    - Includes job completion verification
    - GitHub Actions configured to run tests automatically
 
 ![Snapshot of ganga jobs running](src/gangagsoc/docs/image.png)
+![28 jobs](src/gangagsoc/docs/28_jobs.png)
+
 
 ### Running Instructions
 1. Run the Ganga job:
 ```bash
-cd /root/GSoC/src/gangagsoc
+ganga -i test_split_merge.py
 ```
 2. Run PDF processing tests:
 ```bash
@@ -74,16 +75,19 @@ python test/test_ganga_job.py
 
 ### Implementation Files
 - `Ai_part/generate_pi_code.py`: Handles Gemini API interaction
-- `Ai_part/test_AI.py`: Tests LLM-generated code execution in Ganga
+- `test/test_AI.py`: Asserts LLM Code generation ensuring correct pipeling, it generates a `temp_code.py`
 
 ### LLM Integration Components
-1. **Gemini API Integration**
-   - Implemented in `Ai_part/generate_pi_code.py`
-   - Uses Google's Gemini API for code generation
-   - Handles API authentication and response parsing
+1. **LLM Handler (generate_pi_code.py)**
+   - Manages Gemini API communication
+    - Handles API authentication and response parsing
+   - Functions:
+     - `generate_code()`: Gets PI calculation code from LLM
+     - `parse_response()`: Extracts code from LLM response
+   - Handles API authentication via environment variables
 
 2. **PI Calculation Implementation**
-   - Generated code stored in `generated_pi_program.py`
+    -can be seen in `test/temp_code.py`
    - Implements Monte Carlo method for PI calculation
    - Splits computation into subjobs
 
@@ -97,42 +101,66 @@ python test/test_ganga_job.py
    - Simple HTTP server on localhost
    - Handles LLM queries and displays responses
    - Screenshots/demo video available in `docs/` directory
+   - Features:
+     - Simple HTTP server (localhost)
+     - Query input form
+     - Response display
+     - Code highlighting
 
 ### Testing Instructions
-1. Run Ganga tests:
-```bash
-cd /root/GSoC/src/gangagsoc
-python -m unittest
-```
 
-2. Start Django app:
+ Start Django app:
 ```bash
-cd /root/GSoC/src/llm_project
+cd /Ai_part/llm_project
 python manage.py runserver
 ```
+
 ![Minimal Chat App](src/gangagsoc/docs/frontend-django-chat.png)
 ![LLM generated code](src/gangagsoc/docs/response.png)
 
 ## Dependencies
-Added to setup.py:
-- google-generativeai
-- django
-- pypdf2
-- python-dotenv
+```python
+# Added to setup.py
+install_requires=[
+    'google-generativeai',
+    'django>=4.2',
+    'pypdf2',
+    'python-dotenv',
+]
 
 ## Project Structure
 ```
 gangagsoc/
+├── src/
+│   └── gangagsoc/
+│       ├── docs/                          # Documentation assets
+│       │   ├── hello-world-showcase.png
+│       │   ├── image.png
+│       │   ├── 28_jobs.png
+│       │   ├── frontend-django-chat.png
+│       │   └── response.png
+│       ├── split_pages/                   # Output directory for split PDFs
+│       ├── split-pdf.py                   # PDF splitting script
+│       ├── counter.sh                     # Word counting implementation
+│       ├── mymerger.py                    # Results merger for word count
+│       └── test_split_merge.py           # Main Ganga job implementation
 ├── Ai_part/
-│   ├── generate_pi_code.py
-│   └── test_AI.py
-├── llm_project/
-│   └── manage.py
+│   ├── generate_pi_code.py               # LLM API interaction handler
+│   ├── test_AI.py                        # LLM code generation tests
+│   └── temp_code.py                      # Generated PI calculation code
+├── llm_project/                          # Django web application
+│   ├── manage.py                         # Django management script
+│   ├── chat/                             # Chat application
+│   │   ├── views.py                      # Chat view handlers
+│   │   ├── urls.py                       # URL routing
+│   │   └── templates/                    # HTML templates
+│   └── static/                           # Static assets
 ├── test/
-│   └── test_*.py
-└── setup.py
+│   ├── test_ganga_job.py                 # PDF processing tests
+│   ├── test_AI.py                        # LLM integration tests
+│   └── LHC.pdf                           # Test PDF file
+├── setup.py                              # Project configuration
+├── requirements.txt                       # Project dependencies
+├── PROJECT.md                            # Project documentation
+└── CV.pdf                                # Curriculum 
 ```
-=======
-
-
->>>>>>> master
