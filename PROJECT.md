@@ -24,9 +24,8 @@ python -m pip install -e git+https://github.com/YOUR-GITHUB-USERNAME-HERE/GangaG
 
 ### Hello World Implementation
 Created a basic Ganga job test in `test/test_hello_world.py`:
-```python
+![Hello World Ganga](src/gangagsoc/docs/hello-world-showcase.png)
 
-```
 
 ### PDF Processing Implementation
 1. **PDF Splitting Job**
@@ -104,7 +103,8 @@ python test_AI.py
 cd /root/GSoC/src/llm_project
 python manage.py runserver
 ```
-
+![Minimal Chat App](src/gangagsoc/docs/frontend-django-chat.png)
+![LLM generated code](src/gangagsoc/docs/response.png)
 ## Dependencies
 Added to setup.py:
 - google-generativeai
