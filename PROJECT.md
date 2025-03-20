@@ -129,6 +129,7 @@ install_requires=[
 ]
 
 ## Project Structure
+
 ```
 gangagsoc/
 ├── src/
@@ -143,24 +144,24 @@ gangagsoc/
 │       ├── split-pdf.py                   # PDF splitting script
 │       ├── counter.sh                     # Word counting implementation
 │       ├── mymerger.py                    # Results merger for word count
-│       └── test_split_merge.py           # Main Ganga job implementation
+│       └── test_split_merge.py            # Main Ganga job implementation
 ├── Ai_part/
-│   ├── generate_pi_code.py               # LLM API interaction handler
-│   ├── test_AI.py                        # LLM code generation tests
-│   └── temp_code.py                      # Generated PI calculation code
-├── llm_project/                          # Django web application
-│   ├── manage.py                         # Django management script
-│   ├── chat/                             # Chat application
-│   │   ├── views.py                      # Chat view handlers
-│   │   ├── urls.py                       # URL routing
-│   │   └── templates/                    # HTML templates
-│   └── static/                           # Static assets
+│   ├── generate_pi_code.py                # LLM API interaction handler
+│   ├── test_AI.py                         # LLM code generation tests
+│   └── temp_code.py                       # Generated PI calculation code
+├── llm_project/                           # Django web application
+│   ├── manage.py                          # Django management script
+│   ├── chat/                              # Chat application
+│   │   ├── views.py                       # Chat view handlers
+│   │   ├── urls.py                        # URL routing
+│   │   └── templates/                     # HTML templates
+│   └── static/                            # Static assets
 ├── test/
-│   ├── test_ganga_job.py                 # PDF processing tests
-│   ├── test_AI.py                        # LLM integration tests
-│   └── LHC.pdf                           # Test PDF file
-├── setup.py                              # Project configuration
+│   ├── test_ganga_job.py                  # PDF processing tests
+│   ├── test_AI.py                         # LLM integration tests
+│   └── LHC.pdf                            # Test PDF file
+├── setup.py                               # Project configuration
 ├── requirements.txt                       # Project dependencies
-├── PROJECT.md                            # Project documentation
-└── CV.pdf                                # Curriculum 
+├── PROJECT.md                             # Project documentation
+└── CV.pdf                                 # CV
 ```
