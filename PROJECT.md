@@ -41,7 +41,6 @@ or
 1. **PDF Splitting Job**
    - Implemented in `ganga -i test_split_merge.py`
    - Uses PyPDF2 to split PDF into individual pages
-   - Output stored in `split_pages/` directory
    - split using `python split-pdf.py LHC.pdf `
 
 
